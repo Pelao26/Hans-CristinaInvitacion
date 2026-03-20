@@ -6,116 +6,38 @@
     <title>Boda Hans & Cristina - 05.06.2026</title>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;600&family=Great+Vibes&family=Montserrat:wght@200;400&display=swap" rel="stylesheet">
     <style>
-        :root { --oro: #c5a059; --crema: #fdfaf6; --oscuro: #333; }
-        * { box-sizing: border-box; scroll-behavior: smooth; }
-        body { margin: 0; font-family: 'Montserrat', sans-serif; background-color: var(--crema); color: var(--oscuro); text-align: center; }
+        :root { 
+            --olivo: #556b2f; /* Verde Olivo Principal */
+            --olivo-claro: #8b9467; 
+            --crema-fondo: #f4f1ea; 
+            --dorado-suave: #b8977e;
+            --texto: #3e442b;
+        }
 
-        /* Portada - Si sale blanco, es porque no carga la imagen. He puesto un color de respaldo */
+        * { box-sizing: border-box; scroll-behavior: smooth; }
+        body { margin: 0; font-family: 'Montserrat', sans-serif; background-color: var(--crema-fondo); color: var(--texto); text-align: center; }
+
+        /* Portada con Estilo Olivo */
         .hero {
             height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
-                        url('https://images.unsplash.com/photo-1511795409834-ef04bbd61622?q=80&w=1200') center/cover no-repeat;
-            background-color: #e5d9c5; 
+            background: linear-gradient(rgba(85, 107, 47, 0.4), rgba(85, 107, 47, 0.4)), 
+                        url('https://images.unsplash.com/photo-1523438885200-e635ba2c371e?q=80&w=1200') center/cover no-repeat;
             display: flex; flex-direction: column; justify-content: center; align-items: center; color: white; padding: 20px;
         }
-        .hero h1 { font-family: 'Great Vibes', cursive; font-size: clamp(3rem, 12vw, 5.5rem); margin: 10px 0; }
+        .hero h1 { font-family: 'Great Vibes', cursive; font-size: clamp(3.5rem, 12vw, 6rem); margin: 10px 0; }
         .hero p { font-weight: 200; letter-spacing: 5px; text-transform: uppercase; font-size: 0.8rem; }
 
-        /* Contador */
-        .countdown-section { padding: 50px 15px; background: white; }
+        /* Contador Estilo Natural */
+        .countdown-section { padding: 50px 15px; background: white; border-top: 5px solid var(--olivo); }
         .reloj { display: flex; justify-content: center; gap: 10px; margin-top: 25px; }
-        .unidad { background: var(--crema); padding: 12px; border-radius: 10px; min-width: 70px; border: 1px solid #eee; }
-        .number { display: block; font-size: 1.6rem; font-family: 'Cormorant Garamond', serif; color: var(--oro); font-weight: bold; }
+        .unidad { background: var(--crema-fondo); padding: 15px; border-radius: 12px; min-width: 75px; border: 1px solid #e0ddd5; }
+        .number { display: block; font-size: 1.8rem; font-family: 'Cormorant Garamond', serif; color: var(--olivo); font-weight: bold; }
 
-        /* Tarjetas */
-        .card { max-width: 500px; margin: 30px auto; padding: 40px 20px; background: white; border-radius: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.03); }
-        h2 { font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; color: var(--oro); }
-        .btn { display: inline-block; margin-top: 20px; padding: 15px 35px; background: var(--oro); color: white; text-decoration: none; border-radius: 50px; font-size: 0.8rem; letter-spacing: 1px; transition: 0.3s; }
-
-        /* Icono Música */
-        #music-control { position: fixed; bottom: 20px; right: 20px; z-index: 1000; background: white; border-radius: 50%; width: 45px; height: 45px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--oro); cursor: pointer; }
-    </style>
-</head>
-<body onclick="iniciarExperiencia()">
-
-    <section class="hero">
-        <p>Bajo la bendición de Dios</p>
-        <h1>Hans & Cristina</h1>
-        <p>05 . 06 . 2026</p>
-        <div style="margin-top: 20px; font-size: 0.7rem; opacity: 0.8;">(Toca cualquier parte para activar la música)</div>
-    </section>
-
-    <div class="countdown-section">
-        <h2>Faltan para el Gran Día</h2>
-        <div class="reloj" id="timer">
-            <div class="unidad"><span class="number" id="days">00</span>Días</div>
-            <div class="unidad"><span class="number" id="hours">00</span>Hrs</div>
-            <div class="unidad"><span class="number" id="mins">00</span>Min</div>
-            <div class="unidad"><span class="number" id="secs">00</span>Seg</div>
-        </div>
-    </div>
-
-    <div class="card">
-        <h2>📍 Ubicación</h2>
-        <p><strong>Lugar:</strong> Salón de Eventos</p>
-        <p>Calle Ficticia 123, Ciudad</p>
-        <a href="https://maps.google.com" target="_blank" class="btn">VER MAPA</a>
-    </div>
-
-    <div class="card">
-        <h2>🎁 Regalo de Bodas</h2>
-        <p>"Cada uno dé como propuso en su corazón".</p>
-        <p><strong>Número de Cuenta:</strong><br>191-XXXXXXXX-X-XX</p>
-        <p><strong>Yape/Plin:</strong> 956 345 917</p>
-    </div>
-
-    <div class="card" style="margin-bottom: 60px;">
-        <h2>✅ Confirmación</h2>
-        <p>Agradecemos confirmar antes del 15 de Mayo.</p>
-        <a href="https://wa.me/51956345917?text=Hola%20Hans%20y%20Cristina!%20Confirmo%20mi%20asistencia%20a%20su%20boda." class="btn">CONFIRMAR ASISTENCIA</a>
-    </div>
-
-    <div id="music-control" onclick="toggleMusic()">
-        <span id="music-status">🎵</span>
-    </div>
-
-    <audio id="wedding-song" loop>
-        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" type="audio/mpeg">
-    </audio>
-
-    <script>
-        // Fecha: 5 de Junio de 2026
-        const weddingDate = new Date("Jun 5, 2026 17:00:00").getTime();
-
-        setInterval(() => {
-            const now = new Date().getTime();
-            const diff = weddingDate - now;
-            document.getElementById("days").innerText = Math.floor(diff / (1000 * 60 * 60 * 24));
-            document.getElementById("hours").innerText = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            document.getElementById("mins").innerText = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-            document.getElementById("secs").innerText = Math.floor((diff % (1000 * 60)) / 1000);
-        }, 1000);
-
-        const audio = document.getElementById('wedding-song');
-        let musicStarted = false;
-
-        function iniciarExperiencia() {
-            if (!musicStarted) {
-                audio.play();
-                document.getElementById('music-status').innerText = "⏸";
-                musicStarted = true;
-            }
+        /* Tarjetas de Información */
+        .card { 
+            max-width: 500px; margin: 30px auto; padding: 45px 25px; 
+            background: white; border-radius: 20px; 
+            box-shadow: 0 10px 25px rgba(62, 68, 43, 0.05);
+            border-left: 4px solid var(--olivo-claro);
         }
-
-        function toggleMusic() {
-            if (audio.paused) {
-                audio.play();
-                document.getElementById('music-status').innerText = "⏸";
-            } else {
-                audio.pause();
-                document.getElementById('music-status').innerText = "🎵";
-            }
-        }
-    </script>
-</body>
-</html>
+        h2 { font-family: 'Cormorant Garamond', serif; font-size: 2.3rem; color: var(--olivo);
