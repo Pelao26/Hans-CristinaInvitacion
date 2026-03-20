@@ -3,100 +3,165 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nuestra Boda - Invitación Digital</title>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+    <title>Nuestra Boda - Invitación</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;600&family=Great+Vibes&family=Montserrat:wght@200;400&display=swap" rel="stylesheet">
     <style>
         :root {
-            --dorado: #b8977e;
-            --fondo: #fcfaf8;
-            --texto: #555;
+            --color-oro: #c5a059;
+            --color-suave: #fdfaf6;
+            --texto-oscuro: #333;
         }
-        body { font-family: 'Montserrat', sans-serif; background-color: var(--fondo); color: var(--texto); margin: 0; text-align: center; }
-        
-        /* Portada */
-        .hero { height: 80vh; background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('https://via.placeholder.com/1200x800') center/cover; display: flex; flex-direction: column; justify-content: center; color: white; }
-        .hero h1 { font-family: 'Dancing Script', cursive; font-size: 5rem; margin: 0; }
-        
+
+        * { box-sizing: border-box; }
+        body { 
+            margin: 0; 
+            font-family: 'Montserrat', sans-serif; 
+            background-color: var(--color-suave); 
+            color: var(--texto-oscuro);
+            overflow-x: hidden;
+        }
+
+        /* Hero Section - Estilo TikTok */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), 
+                        url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=1200') center/cover no-repeat;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .hero h1 { 
+            font-family: 'Great Vibes', cursive; 
+            font-size: 5rem; 
+            margin: 10px 0; 
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+        }
+
+        .hero p { font-weight: 200; letter-spacing: 4px; text-transform: uppercase; }
+
         /* Contador */
-        .countdown { display: flex; justify-content: center; gap: 20px; padding: 40px 10px; background: white; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
-        .time-box { background: var(--dorado); color: white; padding: 15px; border-radius: 8px; min-width: 60px; }
-        .time-box span { display: block; font-size: 1.5rem; font-weight: bold; }
+        .countdown-container {
+            padding: 50px 0;
+            background: white;
+        }
 
-        /* Secciones */
-        .section { padding: 60px 20px; max-width: 800px; margin: auto; border-bottom: 1px solid #eee; }
-        h2 { font-family: 'Dancing Script', cursive; font-size: 2.5rem; color: var(--dorado); }
-        .btn { display: inline-block; padding: 15px 30px; background: var(--dorado); color: white; text-decoration: none; border-radius: 30px; margin-top: 20px; transition: 0.3s; }
-        .btn:hover { opacity: 0.8; }
+        .reloj {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
 
-        /* Regalos */
-        .regalos-card { border: 2px dashed var(--dorado); padding: 30px; border-radius: 15px; margin-top: 20px; }
+        .unidad {
+            background: var(--color-suave);
+            padding: 15px;
+            border-radius: 10px;
+            min-width: 80px;
+            border: 1px solid #eee;
+        }
+
+        .number { display: block; font-size: 2rem; font-family: 'Cormorant Garamond', serif; color: var(--color-oro); font-weight: bold; }
+
+        /* Secciones Informativas */
+        .card {
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 40px 20px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+
+        h2 { font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; color: var(--color-oro); }
+
+        .btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 15px 35px;
+            background: var(--color-oro);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: transform 0.3s;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        .btn:hover { transform: scale(1.05); }
+
+        /* Música (Opcional) */
+        #music-player {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: white;
+            padding: 10px;
+            border-radius: 50%;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            cursor: pointer;
+            z-index: 100;
+        }
+
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 3.5rem; }
+            .reloj { gap: 8px; }
+            .unidad { min-width: 65px; padding: 10px; }
+        }
     </style>
 </head>
 <body>
 
-    <div class="hero">
-        <p>¡NOS CASAMOS!</p>
+    <section class="hero">
+        <p>Estás invitado a la boda de</p>
         <h1>Nombre & Nombre</h1>
-        <p>15 de Agosto, 2026</p>
-    </div>
+        <p>15 . 08 . 2026</p>
+    </section>
 
-    <div class="section">
-        <h2>Faltan solo...</h2>
-        <div class="countdown" id="reloj">
-            <div class="time-box"><span id="days">00</span>Días</div>
-            <div class="time-box"><span id="hours">00</span>Hrs</div>
-            <div class="time-box"><span id="mins">00</span>Min</div>
-            <div class="time-box"><span id="secs">00</span>Seg</div>
+    <div class="countdown-container">
+        <h2>Cuenta Regresiva</h2>
+        <div class="reloj" id="timer">
+            <div class="unidad"><span class="number" id="d">00</span>Días</div>
+            <div class="unidad"><span class="number" id="h">00</span>Hrs</div>
+            <div class="unidad"><span class="number" id="m">00</span>Min</div>
+            <div class="unidad"><span class="number" id="s">00</span>Seg</div>
         </div>
     </div>
 
-    <div class="section">
-        <h2>Ceremonia y Recepción</h2>
-        <p>Acompañanos a celebrar este gran paso.</p>
-        <p><strong>Lugar:</strong> Hacienda Las Flores, Calle 123</p>
-        <p><strong>Hora:</strong> 5:00 PM</p>
-        <a href="https://maps.google.com" target="_blank" class="btn">📍 Ver en Google Maps</a>
+    <div class="card">
+        <h2>📍 Lugar del Evento</h2>
+        <p><strong>Ceremonia Religiosa:</strong> Parroquia Central</p>
+        <p><strong>Recepción:</strong> Club de Campo "El Sauce"</p>
+        <a href="https://maps.app.goo.gl/..." target="_blank" class="btn">VER UBICACIÓN</a>
     </div>
 
-    <div class="section">
-        <h2>Mesa de Regalos</h2>
-        <p>Tu presencia es nuestro mejor regalo, pero si deseas tener un detalle con nosotros:</p>
-        <div class="regalos-card">
-            <p><strong>Transferencia Bancaria:</strong><br>
-            Banco Nacional<br>
-            Cta: 000-111222-333<br>
-            CCI: 002-000111222333-XX</p>
-        </div>
+    <div class="card">
+        <h2>🎁 Regalos</h2>
+        <p>Tu compañía es nuestro mejor regalo. Si deseas obsequiarnos algo, puedes hacerlo aquí:</p>
+        <p style="color: var(--color-oro); font-weight: bold;">BCP / BBVA / Plin / Yape</p>
+        <p>Cuenta: 000-111222-333</p>
     </div>
 
-    <div class="section">
-        <h2>Confirmar Asistencia</h2>
-        <p>Para nosotros es muy importante saber si vendrás antes del 1 de Julio.</p>
-        <a href="https://wa.me/123456789?text=Hola!%20Confirmo%20mi%20asistencia%20a%20la%20boda" class="btn">💬 Confirmar por WhatsApp</a>
+    <div class="card">
+        <h2>✅ Confirmación</h2>
+        <p>Por favor, confirma antes del 30 de Junio.</p>
+        <a href="https://wa.me/51900000000?text=Hola!%20Confirmo%20mi%20asistencia" class="btn">CONFIRMAR WHATSAPP</a>
     </div>
 
     <script>
-        // Configura la fecha de la boda aquí
-        const weddingDate = new Date("Aug 15, 2026 17:00:00").getTime();
-
-        const timer = setInterval(function() {
+        const date = new Date("Aug 15, 2026 17:00:00").getTime();
+        setInterval(() => {
             const now = new Date().getTime();
-            const distance = weddingDate - now;
-
-            const d = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const h = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const s = Math.floor((distance % (1000 * 60)) / 1000);
-
-            document.getElementById("days").innerHTML = d;
-            document.getElementById("hours").innerHTML = h;
-            document.getElementById("mins").innerHTML = m;
-            document.getElementById("secs").innerHTML = s;
-
-            if (distance < 0) {
-                clearInterval(timer);
-                document.getElementById("reloj").innerHTML = "¡HOY ES EL GRAN DÍA!";
-            }
+            const diff = date - now;
+            document.getElementById('d').innerText = Math.floor(diff / (1000 * 60 * 60 * 24));
+            document.getElementById('h').innerText = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            document.getElementById('m').innerText = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            document.getElementById('s').innerText = Math.floor((diff % (1000 * 60)) / 1000);
         }, 1000);
     </script>
 
