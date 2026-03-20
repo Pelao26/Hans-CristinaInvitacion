@@ -3,126 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nuestra Boda - 05.06.2026</title>
+    <title>Boda Hans & Cristina - 05.06.2026</title>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;600&family=Great+Vibes&family=Montserrat:wght@200;400&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --oro: #c5a059;
-            --crema: #fdfaf6;
-            --oscuro: #333;
-        }
-
+        :root { --oro: #c5a059; --crema: #fdfaf6; --oscuro: #333; }
         * { box-sizing: border-box; scroll-behavior: smooth; }
-        body { 
-            margin: 0; 
-            font-family: 'Montserrat', sans-serif; 
-            background-color: var(--crema); 
-            color: var(--oscuro);
-            text-align: center;
-        }
+        body { margin: 0; font-family: 'Montserrat', sans-serif; background-color: var(--crema); color: var(--oscuro); text-align: center; }
 
-        /* Portada */
+        /* Portada - Si sale blanco, es porque no carga la imagen. He puesto un color de respaldo */
         .hero {
             height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), 
-                        url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=1200') center/cover no-repeat;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            padding: 20px;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+                        url('https://images.unsplash.com/photo-1511795409834-ef04bbd61622?q=80&w=1200') center/cover no-repeat;
+            background-color: #e5d9c5; 
+            display: flex; flex-direction: column; justify-content: center; align-items: center; color: white; padding: 20px;
         }
-
-        .hero h1 { 
-            font-family: 'Great Vibes', cursive; 
-            font-size: clamp(3.5rem, 10vw, 6rem); 
-            margin: 10px 0; 
-            text-shadow: 2px 2px 15px rgba(0,0,0,0.5);
-        }
-
-        .hero p { font-weight: 200; letter-spacing: 5px; text-transform: uppercase; font-size: 0.9rem; }
+        .hero h1 { font-family: 'Great Vibes', cursive; font-size: clamp(3rem, 12vw, 5.5rem); margin: 10px 0; }
+        .hero p { font-weight: 200; letter-spacing: 5px; text-transform: uppercase; font-size: 0.8rem; }
 
         /* Contador */
-        .countdown-section { padding: 60px 20px; background: white; }
-        .reloj {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-top: 30px;
-        }
+        .countdown-section { padding: 50px 15px; background: white; }
+        .reloj { display: flex; justify-content: center; gap: 10px; margin-top: 25px; }
+        .unidad { background: var(--crema); padding: 12px; border-radius: 10px; min-width: 70px; border: 1px solid #eee; }
+        .number { display: block; font-size: 1.6rem; font-family: 'Cormorant Garamond', serif; color: var(--oro); font-weight: bold; }
 
-        .unidad {
-            background: var(--crema);
-            padding: 15px;
-            border-radius: 12px;
-            min-width: 75px;
-            border: 1px solid #f0e6d2;
-        }
+        /* Tarjetas */
+        .card { max-width: 500px; margin: 30px auto; padding: 40px 20px; background: white; border-radius: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.03); }
+        h2 { font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; color: var(--oro); }
+        .btn { display: inline-block; margin-top: 20px; padding: 15px 35px; background: var(--oro); color: white; text-decoration: none; border-radius: 50px; font-size: 0.8rem; letter-spacing: 1px; transition: 0.3s; }
 
-        .number { 
-            display: block; 
-            font-size: 1.8rem; 
-            font-family: 'Cormorant Garamond', serif; 
-            color: var(--oro); 
-            font-weight: bold; 
-        }
-
-        /* Tarjetas de Información */
-        .card {
-            max-width: 550px;
-            margin: 40px auto;
-            padding: 50px 30px;
-            background: white;
-            border-radius: 30px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.03);
-            border: 1px solid rgba(197, 160, 89, 0.1);
-        }
-
-        h2 { font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; color: var(--oro); margin-bottom: 20px; }
-
-        .btn {
-            display: inline-block;
-            margin-top: 25px;
-            padding: 16px 40px;
-            background: var(--oro);
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            font-size: 0.85rem;
-            letter-spacing: 2px;
-            transition: 0.4s;
-            box-shadow: 0 5px 15px rgba(197, 160, 89, 0.3);
-        }
-
-        .btn:hover { transform: translateY(-3px); opacity: 0.9; }
-
-        /* Icono de Música */
-        #music-control {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 1000;
-            background: white;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            cursor: pointer;
-            border: 1px solid var(--oro);
-            color: var(--oro);
-        }
+        /* Icono Música */
+        #music-control { position: fixed; bottom: 20px; right: 20px; z-index: 1000; background: white; border-radius: 50%; width: 45px; height: 45px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--oro); cursor: pointer; }
     </style>
 </head>
-<body onclick="playAudio()">
+<body onclick="iniciarExperiencia()">
 
     <section class="hero">
         <p>Bajo la bendición de Dios</p>
-        <h1>Nombre & Nombre</h1>
+        <h1>Hans & Cristina</h1>
         <p>05 . 06 . 2026</p>
+        <div style="margin-top: 20px; font-size: 0.7rem; opacity: 0.8;">(Toca cualquier parte para activar la música)</div>
     </section>
 
     <div class="countdown-section">
@@ -137,23 +57,22 @@
 
     <div class="card">
         <h2>📍 Ubicación</h2>
-        <p>Estamos felices de compartir este momento contigo.</p>
-        <p><strong>Lugar:</strong> Nombre de la Recepción o Iglesia</p>
-        <p>Dirección exacta aquí</p>
+        <p><strong>Lugar:</strong> Salón de Eventos</p>
+        <p>Calle Ficticia 123, Ciudad</p>
         <a href="https://maps.google.com" target="_blank" class="btn">VER MAPA</a>
     </div>
 
     <div class="card">
         <h2>🎁 Regalo de Bodas</h2>
         <p>"Cada uno dé como propuso en su corazón".</p>
-        <p><strong>Cuenta Bancaria:</strong><br>000-111222333-444</p>
-        <p><strong>CCI:</strong><br>002-000111222333444-XX</p>
+        <p><strong>Número de Cuenta:</strong><br>191-XXXXXXXX-X-XX</p>
+        <p><strong>Yape/Plin:</strong> 956 345 917</p>
     </div>
 
-    <div class="card" style="margin-bottom: 80px;">
+    <div class="card" style="margin-bottom: 60px;">
         <h2>✅ Confirmación</h2>
-        <p>Agradecemos confirmar tu asistencia antes del 15 de Mayo.</p>
-        <a href="https://wa.me/51900000000?text=Hola!%20Confirmo%20mi%20asistencia" class="btn">CONFIRMAR ASISTENCIA</a>
+        <p>Agradecemos confirmar antes del 15 de Mayo.</p>
+        <a href="https://wa.me/51956345917?text=Hola%20Hans%20y%20Cristina!%20Confirmo%20mi%20asistencia%20a%20su%20boda." class="btn">CONFIRMAR ASISTENCIA</a>
     </div>
 
     <div id="music-control" onclick="toggleMusic()">
@@ -165,33 +84,26 @@
     </audio>
 
     <script>
-        // CONFIGURACIÓN DE LA FECHA: 5 DE JUNIO 2026
+        // Fecha: 5 de Junio de 2026
         const weddingDate = new Date("Jun 5, 2026 17:00:00").getTime();
 
-        const timer = setInterval(() => {
+        setInterval(() => {
             const now = new Date().getTime();
-            const distance = weddingDate - now;
-
-            document.getElementById("days").innerText = Math.floor(distance / (1000 * 60 * 60 * 24));
-            document.getElementById("hours").innerText = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            document.getElementById("mins").innerText = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            document.getElementById("secs").innerText = Math.floor((distance % (1000 * 60)) / 1000);
-
-            if (distance < 0) {
-                clearInterval(timer);
-                document.getElementById("timer").innerHTML = "¡ES HOY!";
-            }
+            const diff = weddingDate - now;
+            document.getElementById("days").innerText = Math.floor(diff / (1000 * 60 * 60 * 24));
+            document.getElementById("hours").innerText = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            document.getElementById("mins").innerText = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            document.getElementById("secs").innerText = Math.floor((diff % (1000 * 60)) / 1000);
         }, 1000);
 
-        // CONTROL DE MÚSICA
         const audio = document.getElementById('wedding-song');
-        let hasPlayed = false;
+        let musicStarted = false;
 
-        function playAudio() {
-            if (!hasPlayed) {
-                audio.play().catch(e => console.log("Esperando interacción..."));
+        function iniciarExperiencia() {
+            if (!musicStarted) {
+                audio.play();
                 document.getElementById('music-status').innerText = "⏸";
-                hasPlayed = true;
+                musicStarted = true;
             }
         }
 
