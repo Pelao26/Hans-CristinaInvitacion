@@ -73,4 +73,137 @@
             max-width: 550px;
             margin: 40px auto;
             padding: 50px 30px;
-            background:
+            background: white;
+            border-radius: 30px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.03);
+            border: 1px solid rgba(197, 160, 89, 0.1);
+        }
+
+        h2 { font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; color: var(--oro); margin-bottom: 20px; }
+
+        .btn {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 16px 40px;
+            background: var(--oro);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            transition: 0.4s;
+            box-shadow: 0 5px 15px rgba(197, 160, 89, 0.3);
+        }
+
+        .btn:hover { transform: translateY(-3px); opacity: 0.9; }
+
+        /* Icono de Música */
+        #music-control {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: white;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            cursor: pointer;
+            border: 1px solid var(--oro);
+            color: var(--oro);
+        }
+    </style>
+</head>
+<body onclick="playAudio()">
+
+    <section class="hero">
+        <p>Bajo la bendición de Dios</p>
+        <h1>Nombre & Nombre</h1>
+        <p>05 . 06 . 2026</p>
+    </section>
+
+    <div class="countdown-section">
+        <h2>Faltan para el Gran Día</h2>
+        <div class="reloj" id="timer">
+            <div class="unidad"><span class="number" id="days">00</span>Días</div>
+            <div class="unidad"><span class="number" id="hours">00</span>Hrs</div>
+            <div class="unidad"><span class="number" id="mins">00</span>Min</div>
+            <div class="unidad"><span class="number" id="secs">00</span>Seg</div>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>📍 Ubicación</h2>
+        <p>Estamos felices de compartir este momento contigo.</p>
+        <p><strong>Lugar:</strong> Nombre de la Recepción o Iglesia</p>
+        <p>Dirección exacta aquí</p>
+        <a href="https://maps.google.com" target="_blank" class="btn">VER MAPA</a>
+    </div>
+
+    <div class="card">
+        <h2>🎁 Regalo de Bodas</h2>
+        <p>"Cada uno dé como propuso en su corazón".</p>
+        <p><strong>Cuenta Bancaria:</strong><br>000-111222333-444</p>
+        <p><strong>CCI:</strong><br>002-000111222333444-XX</p>
+    </div>
+
+    <div class="card" style="margin-bottom: 80px;">
+        <h2>✅ Confirmación</h2>
+        <p>Agradecemos confirmar tu asistencia antes del 15 de Mayo.</p>
+        <a href="https://wa.me/51900000000?text=Hola!%20Confirmo%20mi%20asistencia" class="btn">CONFIRMAR ASISTENCIA</a>
+    </div>
+
+    <div id="music-control" onclick="toggleMusic()">
+        <span id="music-status">🎵</span>
+    </div>
+
+    <audio id="wedding-song" loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        // CONFIGURACIÓN DE LA FECHA: 5 DE JUNIO 2026
+        const weddingDate = new Date("Jun 5, 2026 17:00:00").getTime();
+
+        const timer = setInterval(() => {
+            const now = new Date().getTime();
+            const distance = weddingDate - now;
+
+            document.getElementById("days").innerText = Math.floor(distance / (1000 * 60 * 60 * 24));
+            document.getElementById("hours").innerText = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            document.getElementById("mins").innerText = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            document.getElementById("secs").innerText = Math.floor((distance % (1000 * 60)) / 1000);
+
+            if (distance < 0) {
+                clearInterval(timer);
+                document.getElementById("timer").innerHTML = "¡ES HOY!";
+            }
+        }, 1000);
+
+        // CONTROL DE MÚSICA
+        const audio = document.getElementById('wedding-song');
+        let hasPlayed = false;
+
+        function playAudio() {
+            if (!hasPlayed) {
+                audio.play().catch(e => console.log("Esperando interacción..."));
+                document.getElementById('music-status').innerText = "⏸";
+                hasPlayed = true;
+            }
+        }
+
+        function toggleMusic() {
+            if (audio.paused) {
+                audio.play();
+                document.getElementById('music-status').innerText = "⏸";
+            } else {
+                audio.pause();
+                document.getElementById('music-status').innerText = "🎵";
+            }
+        }
+    </script>
+</body>
+</html>
