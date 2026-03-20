@@ -3,25 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nuestra Boda - Invitación</title>
+    <title>Nuestra Boda - 05.06.2026</title>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;600&family=Great+Vibes&family=Montserrat:wght@200;400&display=swap" rel="stylesheet">
     <style>
         :root {
-            --color-oro: #c5a059;
-            --color-suave: #fdfaf6;
-            --texto-oscuro: #333;
+            --oro: #c5a059;
+            --crema: #fdfaf6;
+            --oscuro: #333;
         }
 
-        * { box-sizing: border-box; }
+        * { box-sizing: border-box; scroll-behavior: smooth; }
         body { 
             margin: 0; 
             font-family: 'Montserrat', sans-serif; 
-            background-color: var(--color-suave); 
-            color: var(--texto-oscuro);
-            overflow-x: hidden;
+            background-color: var(--crema); 
+            color: var(--oscuro);
+            text-align: center;
         }
 
-        /* Hero Section - Estilo TikTok */
+        /* Portada */
         .hero {
             height: 100vh;
             background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), 
@@ -31,139 +31,46 @@
             justify-content: center;
             align-items: center;
             color: white;
-            text-align: center;
             padding: 20px;
         }
 
         .hero h1 { 
             font-family: 'Great Vibes', cursive; 
-            font-size: 5rem; 
+            font-size: clamp(3.5rem, 10vw, 6rem); 
             margin: 10px 0; 
-            text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+            text-shadow: 2px 2px 15px rgba(0,0,0,0.5);
         }
 
-        .hero p { font-weight: 200; letter-spacing: 4px; text-transform: uppercase; }
+        .hero p { font-weight: 200; letter-spacing: 5px; text-transform: uppercase; font-size: 0.9rem; }
 
         /* Contador */
-        .countdown-container {
-            padding: 50px 0;
-            background: white;
-        }
-
+        .countdown-section { padding: 60px 20px; background: white; }
         .reloj {
             display: flex;
             justify-content: center;
-            gap: 15px;
-            margin-top: 20px;
+            gap: 10px;
+            margin-top: 30px;
         }
 
         .unidad {
-            background: var(--color-suave);
+            background: var(--crema);
             padding: 15px;
-            border-radius: 10px;
-            min-width: 80px;
-            border: 1px solid #eee;
+            border-radius: 12px;
+            min-width: 75px;
+            border: 1px solid #f0e6d2;
         }
 
-        .number { display: block; font-size: 2rem; font-family: 'Cormorant Garamond', serif; color: var(--color-oro); font-weight: bold; }
+        .number { 
+            display: block; 
+            font-size: 1.8rem; 
+            font-family: 'Cormorant Garamond', serif; 
+            color: var(--oro); 
+            font-weight: bold; 
+        }
 
-        /* Secciones Informativas */
+        /* Tarjetas de Información */
         .card {
-            max-width: 600px;
+            max-width: 550px;
             margin: 40px auto;
-            padding: 40px 20px;
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            text-align: center;
-        }
-
-        h2 { font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; color: var(--color-oro); }
-
-        .btn {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 15px 35px;
-            background: var(--color-oro);
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            transition: transform 0.3s;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
-        }
-
-        .btn:hover { transform: scale(1.05); }
-
-        /* Música (Opcional) */
-        #music-player {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: white;
-            padding: 10px;
-            border-radius: 50%;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-            cursor: pointer;
-            z-index: 100;
-        }
-
-        @media (max-width: 600px) {
-            .hero h1 { font-size: 3.5rem; }
-            .reloj { gap: 8px; }
-            .unidad { min-width: 65px; padding: 10px; }
-        }
-    </style>
-</head>
-<body>
-
-    <section class="hero">
-        <p>Estás invitado a la boda de</p>
-        <h1>Nombre & Nombre</h1>
-        <p>15 . 08 . 2026</p>
-    </section>
-
-    <div class="countdown-container">
-        <h2>Cuenta Regresiva</h2>
-        <div class="reloj" id="timer">
-            <div class="unidad"><span class="number" id="d">00</span>Días</div>
-            <div class="unidad"><span class="number" id="h">00</span>Hrs</div>
-            <div class="unidad"><span class="number" id="m">00</span>Min</div>
-            <div class="unidad"><span class="number" id="s">00</span>Seg</div>
-        </div>
-    </div>
-
-    <div class="card">
-        <h2>📍 Lugar del Evento</h2>
-        <p><strong>Ceremonia Religiosa:</strong> Parroquia Central</p>
-        <p><strong>Recepción:</strong> Club de Campo "El Sauce"</p>
-        <a href="https://maps.app.goo.gl/..." target="_blank" class="btn">VER UBICACIÓN</a>
-    </div>
-
-    <div class="card">
-        <h2>🎁 Regalos</h2>
-        <p>Tu compañía es nuestro mejor regalo. Si deseas obsequiarnos algo, puedes hacerlo aquí:</p>
-        <p style="color: var(--color-oro); font-weight: bold;">BCP / BBVA / Plin / Yape</p>
-        <p>Cuenta: 000-111222-333</p>
-    </div>
-
-    <div class="card">
-        <h2>✅ Confirmación</h2>
-        <p>Por favor, confirma antes del 30 de Junio.</p>
-        <a href="https://wa.me/51900000000?text=Hola!%20Confirmo%20mi%20asistencia" class="btn">CONFIRMAR WHATSAPP</a>
-    </div>
-
-    <script>
-        const date = new Date("Aug 15, 2026 17:00:00").getTime();
-        setInterval(() => {
-            const now = new Date().getTime();
-            const diff = date - now;
-            document.getElementById('d').innerText = Math.floor(diff / (1000 * 60 * 60 * 24));
-            document.getElementById('h').innerText = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            document.getElementById('m').innerText = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-            document.getElementById('s').innerText = Math.floor((diff % (1000 * 60)) / 1000);
-        }, 1000);
-    </script>
-
-</body>
-</html>
+            padding: 50px 30px;
+            background:
