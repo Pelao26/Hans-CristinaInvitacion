@@ -4,167 +4,191 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Boda Hans & Cristina</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;600&family=Great+Vibes&family=Montserrat:wght@200;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300&family=Great+Vibes&family=Montserrat:wght@200;400&display=swap" rel="stylesheet">
     <style>
         :root { 
-            --olivo: #748b6f; 
+            --olivo-medio: #8b9467; 
             --olivo-oscuro: #556b2f;
-            --crema: #fdfcf9; 
-            --dorado: #b8977e;
-            --texto: #4a4a4a;
+            --crema-fondo: #fcfbf7; 
+            --texto-suave: #4a4a4a;
         }
 
         * { box-sizing: border-box; scroll-behavior: smooth; }
-        body { margin: 0; font-family: 'Montserrat', sans-serif; background-color: var(--crema); color: var(--texto); overflow-x: hidden; }
+        body { 
+            margin: 0; 
+            font-family: 'Montserrat', sans-serif; 
+            background-color: var(--crema-fondo); 
+            color: var(--texto-suave); 
+            overflow-x: hidden;
+        }
 
-        /* Animaciones */
-        .fade-in { opacity: 0; transform: translateY(20px); transition: all 1s ease-out; }
+        /* Hojas decorativas en las esquinas (estética botánica) */
+        body::before {
+            content: "";
+            position: fixed; top: 0; right: 0; width: 150px; height: 150px;
+            background: url('https://www.transparentpng.com/download/leaves/green-leaves-png-images-12.png') no-repeat;
+            background-size: contain; opacity: 0.15; z-index: 999; pointer-events: none;
+        }
+
+        .fade-in { opacity: 0; transform: translateY(30px); transition: all 1.2s ease-out; }
         .fade-in.visible { opacity: 1; transform: translateY(0); }
 
-        /* Portada Principal */
+        /* PORTADA MINIMALISTA */
         .hero {
             height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80') center/cover no-repeat;
-            display: flex; flex-direction: column; justify-content: center; align-items: center; color: white; text-align: center;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            background: linear-gradient(rgba(255,255,255,0.2), rgba(255,255,255,0.2)), 
+                        url('https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=1200') center/cover no-repeat;
+            text-align: center; border-bottom: 8px solid var(--olivo-medio);
         }
-        .hero h1 { font-family: 'Great Vibes', cursive; font-size: clamp(4rem, 15vw, 7rem); margin: 0; text-shadow: 2px 2px 10px rgba(0,0,0,0.3); }
-        .hero p { letter-spacing: 4px; text-transform: uppercase; font-size: 0.9rem; margin-top: 10px; }
+        .hero h1 { font-family: 'Great Vibes', cursive; font-size: clamp(4.5rem, 18vw, 8rem); margin: 0; color: #fff; text-shadow: 2px 2px 15px rgba(0,0,0,0.2); }
+        .hero p { letter-spacing: 6px; text-transform: uppercase; font-size: 0.8rem; color: #fff; margin-top: 15px; }
 
-        /* Versículo */
-        .verse-section { padding: 80px 20px; text-align: center; background: white; }
-        .verse-section i { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; color: var(--olivo); display: block; margin-bottom: 10px; }
-        .verse-section p { font-size: 1.1rem; max-width: 600px; margin: 0 auto; line-height: 1.6; }
+        /* SECCIÓN CRONOGRAMA (Estilo Alba & Pedro) */
+        .timeline-box { padding: 80px 15px; background: #fff; text-align: center; }
+        .timeline-container {
+            display: flex; justify-content: space-around; flex-wrap: wrap; 
+            max-width: 900px; margin: 40px auto; position: relative;
+        }
+        .timeline-item { flex: 1; min-width: 150px; padding: 20px; position: relative; }
+        .timeline-item img { width: 50px; height: 50px; margin-bottom: 15px; opacity: 0.7; }
+        .timeline-item h4 { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; margin: 10px 0 5px; color: var(--olivo-oscuro); }
+        .timeline-item p { font-size: 0.85rem; font-weight: bold; color: #999; }
 
-        /* Contador Estilo Canva */
-        .counter-box { background: var(--olivo); color: white; padding: 60px 20px; }
-        .counter-box h2 { font-family: 'Great Vibes', cursive; font-size: 3rem; margin-bottom: 30px; }
-        .timer { display: flex; justify-content: center; gap: 20px; }
-        .time-part { display: flex; flex-direction: column; font-size: 0.8rem; letter-spacing: 2px; }
-        .time-part span { font-size: 2.5rem; font-family: 'Cormorant Garamond', serif; font-weight: bold; }
+        /* TARJETAS DE INFORMACIÓN */
+        .card { 
+            max-width: 550px; margin: 50px auto; padding: 50px 30px; 
+            background: #fff; border-radius: 2px; 
+            box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+            border: 1px solid #f0efeb;
+        }
+        h2 { font-family: 'Cormorant Garamond', serif; font-size: 2.8rem; color: var(--olivo-oscuro); font-weight: 300; }
+        .divider { width: 50px; height: 1px; background: var(--olivo-medio); margin: 20px auto; }
 
-        /* Secciones con Imagen */
-        .section-img { width: 100%; max-width: 500px; height: 350px; object-fit: cover; border-radius: 15px; margin-bottom: 25px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        /* BOTONES */
+        .btn { 
+            display: inline-block; padding: 18px 45px; border: 1px solid var(--olivo-medio);
+            color: var(--olivo-oscuro); text-decoration: none; font-size: 0.75rem; 
+            letter-spacing: 2px; text-transform: uppercase; transition: 0.4s; margin-top: 20px;
+        }
+        .btn:hover { background: var(--olivo-medio); color: #fff; }
 
-        /* Cronograma (Timeline) */
-        .timeline { padding: 60px 20px; background: #fff; }
-        .timeline-item { border-bottom: 1px solid #eee; padding: 20px 0; display: flex; justify-content: space-between; align-items: center; max-width: 500px; margin: 0 auto; }
-        .timeline-item b { color: var(--olivo); font-size: 1.2rem; }
+        /* PLAYLIST (Verde Olivo de Fondo) */
+        .playlist-card { background: var(--olivo-oscuro); color: #fff; border: none; }
+        .playlist-card h2 { color: #fff; font-family: 'Great Vibes', cursive; font-size: 3.5rem; }
+        .playlist-card .btn { border-color: #fff; color: #fff; }
 
-        /* Tarjetas */
-        .card { max-width: 550px; margin: 40px auto; padding: 40px 25px; background: white; border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.03); border: 1px solid #f0f0f0; }
-        h2 { font-family: 'Great Vibes', cursive; font-size: 3.5rem; color: var(--olivo); margin-bottom: 10px; }
-        .btn { display: inline-block; background: var(--olivo); color: white; padding: 15px 35px; text-decoration: none; border-radius: 50px; margin-top: 20px; font-size: 0.9rem; letter-spacing: 1px; transition: 0.3s; }
-        .btn:hover { background: var(--olivo-oscuro); transform: scale(1.05); }
-
-        /* Playlist Section */
-        .playlist-card { background: var(--olivo); color: white; }
-        .playlist-card h2, .playlist-card p { color: white; }
-        .btn-white { background: white; color: var(--olivo); font-weight: bold; }
-
-        /* Float Music Button */
-        #music-toggle { position: fixed; bottom: 20px; right: 20px; background: white; border: 2px solid var(--olivo); border-radius: 50%; width: 50px; height: 50px; cursor: pointer; z-index: 1000; display: flex; align-items: center; justify-content: center; color: var(--olivo); font-size: 1.5rem; }
+        /* MÚSICA FLOTANTE */
+        #music-btn {
+            position: fixed; bottom: 30px; left: 30px; width: 45px; height: 45px;
+            background: #fff; border: 1px solid var(--olivo-medio); border-radius: 50%;
+            cursor: pointer; z-index: 1001; display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
     </style>
 </head>
-<body onclick="startMusic()" onscroll="startMusic()">
+<body onscroll="playMusic()" onclick="playMusic()" ontouchstart="playMusic()">
 
     <section class="hero">
         <div class="fade-in">
-            <p>Nos Casamos</p>
+            <p>Con la bendición de Dios</p>
             <h1>Hans & Cristina</h1>
             <p>05 . 06 . 2026</p>
-            <p style="font-size: 0.6rem; margin-top: 40px;">Desliza para descubrir</p>
         </div>
     </section>
 
-    <section class="verse-section fade-in">
-        <i>"El amor nunca deja de ser"</i>
-        <p>1 Corintios 13:8</p>
-        <div style="margin-top: 30px;">
-            <p>Con la bendición de Dios y el corazón lleno de amor, hemos decidido unir nuestras vidas en matrimonio.</p>
-        </div>
+    <section class="card fade-in" style="text-align: center; border: none; background: transparent;">
+        <p style="font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-style: italic;">
+            "Cordón de tres dobleces no se rompe fácilmente."
+        </p>
+        <p style="font-size: 0.9rem; color: #888;">Eclesiastés 4:12</p>
     </section>
 
-    <section class="counter-box fade-in">
-        <h2>Faltan...</h2>
-        <div class="timer">
-            <div class="time-part"><span id="days">00</span>DÍAS</div>
-            <div class="time-part"><span id="hours">00</span>HORAS</div>
-            <div class="time-part"><span id="mins">00</span>MIN</div>
-            <div class="time-part"><span id="secs">00</span>SEG</div>
-        </div>
-    </section>
-
-    <section class="timeline fade-in">
+    <section class="timeline-box fade-in">
         <h2>Itinerario</h2>
-        <div class="timeline-item"><span>Ceremonia - Iglesia La Ermita</span> <b>6:00 PM</b></div>
-        <div class="timeline-item"><span>Recepción - Salón de Eventos</span> <b>7:00 PM</b></div>
-        <div class="timeline-item"><span>Cena</span> <b>8:30 PM</b></div>
-        <div class="timeline-item"><span>Comienza la Fiesta</span> <b>10:00 PM</b></div>
-        <a href="https://maps.google.com" class="btn">VER UBICACIÓN</a>
+        <div class="divider"></div>
+        <div class="timeline-container">
+            <div class="timeline-item">
+                <img src="https://cdn-icons-png.flaticon.com/512/3669/3669967.png" alt="Ceremonia">
+                <h4>Ceremonia</h4>
+                <p>6:00 PM</p>
+                <small>Iglesia La Ermita</small>
+            </div>
+            <div class="timeline-item">
+                <img src="https://cdn-icons-png.flaticon.com/512/3168/3168010.png" alt="Brindis">
+                <h4>Recepción</h4>
+                <p>7:30 PM</p>
+                <small>Salón Principal</small>
+            </div>
+            <div class="timeline-item">
+                <img src="https://cdn-icons-png.flaticon.com/512/4343/4343277.png" alt="Fiesta">
+                <h4>Fiesta</h4>
+                <p>10:00 PM</p>
+                <small>¡A bailar!</small>
+            </div>
+        </div>
+        <a href="https://maps.google.com" target="_blank" class="btn">Ver Ubicación</a>
     </section>
 
-    <div class="card fade-in">
-        <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?q=80&w=500" class="section-img" alt="Vestimenta">
-        <h2>Vestimenta</h2>
-        <p><b>Formal de noche</b></p>
-        <p>Este día el blanco es para la novia, el rojo para los pétalos y el negro para la noche. ¡Tú elige uno para brillar!</p>
+    <div class="card fade-in" style="text-align: center;">
+        <h2>Código de Vestimenta</h2>
+        <div class="divider"></div>
+        <p><b>FORMAL DE NOCHE</b></p>
+        <p style="font-size: 0.9rem; line-height: 1.8;">
+            Este día el blanco es para la novia, el rojo para los pétalos y el negro para la noche.<br>
+            ¡Millones de colores para brillar!
+        </p>
     </div>
 
-    <div class="card playlist-card fade-in">
-        <h2>Tu Misión:</h2>
-        <p>Salvar la pista de baile. Súmate a la playlist de la boda, agrega los temazos que no pueden faltar.</p>
-        <a href="#" class="btn btn-white">¡ARMEMOS EL PLAYLIST!</a>
+    <div class="card playlist-card fade-in" style="text-align: center;">
+        <h2>Tu Misión</h2>
+        <p>Ayúdanos a elegir las canciones que no pueden faltar en la fiesta.</p>
+        <a href="#" class="btn">Sugerir Canción</a>
     </div>
 
-    <div class="card fade-in">
-        <img src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?q=80&w=500" class="section-img" alt="Regalos">
+    <div class="card fade-in" style="text-align: center;">
         <h2>Regalos</h2>
-        <p>El mejor regalo es tu presencia, pero si deseas hacernos un obsequio, una contribución en efectivo será de gran ayuda.</p>
+        <div class="divider"></div>
+        <p>Tu presencia es nuestro mejor regalo, pero si deseas tener un detalle:</p>
         <p><b>Yape / Plin: 956 345 917</b></p>
+        <p style="font-size: 0.8rem; color: #999;">BCP: 191-XXXXXXXX-X-XX</p>
     </div>
 
-    <div class="card fade-in" style="margin-bottom: 100px;">
-        <h2>¿Nos acompañas?</h2>
-        <p>Por favor, confirma tu asistencia antes del 15 de mayo de 2026.</p>
-        <a href="https://wa.me/51956345917?text=Hola%20Hans%20y%20Cristina!%20Confirmo%20mi%20asistencia." class="btn">CONFIRMAR AQUÍ</a>
+    <div class="card fade-in" style="margin-bottom: 100px; text-align: center;">
+        <h2>Confirmación</h2>
+        <p>Agradecemos confirmar tu asistencia antes del 15 de Mayo.</p>
+        <a href="https://wa.me/51956345917?text=Hola%20Hans%20y%20Cristina!%20Confirmo%20mi%20asistencia." class="btn" style="background: var(--olivo-oscuro); color: #fff;">Confirmar Asistencia</a>
     </div>
 
-    <button id="music-toggle" onclick="toggleMusic(event)">🎵</button>
-    <audio id="song" loop>
+    <div id="music-btn" onclick="toggleMusic(event)">🎵</div>
+    <audio id="player" loop>
         <source src="https://www.chosic.com/wp-content/uploads/2021/07/Rain-and-Light-Adoration.mp3" type="audio/mpeg">
     </audio>
 
     <script>
-        // Contador
-        const target = new Date("Jun 5, 2026 18:00:00").getTime();
-        setInterval(() => {
-            const now = new Date().getTime();
-            const d = target - now;
-            document.getElementById("days").innerText = Math.floor(d / (1000 * 60 * 60 * 24));
-            document.getElementById("hours").innerText = Math.floor((d % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            document.getElementById("mins").innerText = Math.floor((d % (1000 * 60 * 60)) / (1000 * 60));
-            document.getElementById("secs").innerText = Math.floor((d % (1000 * 60)) / 1000);
-        }, 1000);
-
-        // Aparecer al hacer scroll
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) entry.target.classList.add('visible');
-            });
+        // Animación de aparición
+        const obs = new IntersectionObserver((entries) => {
+            entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
         }, { threshold: 0.1 });
+        document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
 
-        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+        // Control de Música
+        const audio = document.getElementById("player");
+        let isStarted = false;
 
-        // Música
-        const audio = document.getElementById("song");
-        let playing = false;
-        function startMusic() {
-            if(!playing) { audio.play(); playing = true; document.getElementById("music-toggle").innerText = "⏸"; }
+        function playMusic() {
+            if(!isStarted) {
+                audio.play().then(() => {
+                    isStarted = true;
+                    document.getElementById("music-btn").innerText = "⏸";
+                });
+            }
         }
+
         function toggleMusic(e) {
             e.stopPropagation();
-            if(audio.paused) { audio.play(); document.getElementById("music-toggle").innerText = "⏸"; }
-            else { audio.pause(); document.getElementById("music-toggle").innerText = "🎵"; }
+            if(audio.paused) { audio.play(); document.getElementById("music-btn").innerText = "⏸"; }
+            else { audio.pause(); document.getElementById("music-btn").innerText = "🎵"; }
         }
     </script>
 </body>
