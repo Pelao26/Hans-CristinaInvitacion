@@ -3,170 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Boda Hans & Cristina</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300&family=Great+Vibes&family=Montserrat:wght@200;400&display=swap" rel="stylesheet">
-    <style>
-        :root { 
-            --olivo-medio: #8b9467; 
-            --olivo-oscuro: #556b2f;
-            --crema-fondo: #fcfbf7; 
-            --texto-suave: #4a4a4a;
-        }
-
-        * { box-sizing: border-box; scroll-behavior: smooth; }
-        body { 
-            margin: 0; 
-            font-family: 'Montserrat', sans-serif; 
-            background-color: var(--crema-fondo); 
-            color: var(--texto-suave); 
-            overflow-x: hidden;
-        }
-
-        /* Decoração botânica fixa */
-        body::before {
-            content: "";
-            position: fixed; top: 0; right: 0; width: 150px; height: 150px;
-            background: url('https://www.transparentpng.com/download/leaves/green-leaves-png-images-12.png') no-repeat;
-            background-size: contain; opacity: 0.12; z-index: 999; pointer-events: none;
-        }
-
-        .fade-in { opacity: 0; transform: translateY(30px); transition: all 1.2s ease-out; }
-        .fade-in.visible { opacity: 1; transform: translateY(0); }
-
-        /* PORTADA */
-        .hero {
-            height: 100vh;
-            display: flex; flex-direction: column; justify-content: center; align-items: center;
-            background: linear-gradient(rgba(255,255,255,0.1), rgba(255,255,255,0.1)), 
-                        url('https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1200') center/cover no-repeat;
-            text-align: center; border-bottom: 8px solid var(--olivo-medio);
-        }
-        .hero h1 { font-family: 'Great Vibes', cursive; font-size: clamp(4rem, 15vw, 7rem); margin: 0; color: #fff; text-shadow: 2px 2px 10px rgba(0,0,0,0.2); }
-        .hero p { letter-spacing: 5px; text-transform: uppercase; font-size: 0.8rem; color: #fff; margin-top: 10px; font-weight: 200; }
-
-        /* CONTEÚDO */
-        .card { 
-            max-width: 600px; margin: 40px auto; padding: 40px 20px; 
-            background: #fff; text-align: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
-        }
-        h2 { font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; color: var(--olivo-oscuro); font-weight: 300; }
-        .divider { width: 40px; height: 1px; background: var(--olivo-medio); margin: 15px auto; }
-
-        /* ITINERÁRIO COM ÍCONES */
-        .timeline { display: flex; justify-content: space-around; flex-wrap: wrap; margin-top: 30px; }
-        .timeline-item { flex: 1; min-width: 120px; margin-bottom: 20px; }
-        .timeline-item img { width: 45px; opacity: 0.6; margin-bottom: 10px; }
-        .timeline-item h4 { font-family: 'Cormorant Garamond', serif; margin: 5px 0; font-size: 1.2rem; }
-
-        /* BOTÕES */
-        .btn { 
-            display: inline-block; padding: 15px 35px; border: 1px solid var(--olivo-medio);
-            color: var(--olivo-oscuro); text-decoration: none; font-size: 0.7rem; 
-            letter-spacing: 2px; text-transform: uppercase; transition: 0.3s;
-        }
-        .btn:hover { background: var(--olivo-medio); color: #fff; }
-
-        /* PLAYER FLUTUANTE */
-        #music-control {
-            position: fixed; bottom: 25px; left: 25px; width: 50px; height: 50px;
-            background: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1); cursor: pointer; z-index: 1000;
-            border: 1px solid var(--olivo-medio);
-        }
-        .pulse { animation: pulse-red 2s infinite; }
-        @keyframes pulse-red { 0% { box-shadow: 0 0 0 0 rgba(139, 148, 103, 0.4); } 70% { box-shadow: 0 0 0 10px rgba(139, 148, 103, 0); } 100% { box-shadow: 0 0 0 0 rgba(139, 148, 103, 0); } }
-    </style>
+    <title>Hans & Cristina - Nuestra Boda</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
 </head>
-<body onclick="startAudio()" onscroll="startAudio()">
+<body>
 
-    <section class="hero">
-        <div class="fade-in">
-            <p>Nuestra Boda</p>
+    <nav class="navbar">
+        <ul>
+            <li><a href="#home">HOME</a></li>
+            <li><a href="#story">HISTORIA</a></li>
+            <li><a href="#rsvp">RSVP</a></li>
+            <li><a href="#faq">FAQ</a></li>
+        </ul>
+    </nav>
+
+    <header id="home" class="hero">
+        <div class="hero-content">
+            <p>THE WEDDING OF</p>
             <h1>Hans & Cristina</h1>
-            <p>05 . 06 . 2026</p>
+            <p class="date">05 DE JUNIO, 2026</p>
+        </div>
+    </header>
+
+    <section id="story" class="welcome">
+        <div class="container">
+            <h2>Bienvenidos</h2>
+            <p>Estamos felices de compartir este día tan especial con ustedes...</p>
+            <div class="flowers"></div>
         </div>
     </section>
 
-    <section class="card fade-in">
-        <h2>Itinerario</h2>
-        <div class="divider"></div>
-        <div class="timeline">
-            <div class="timeline-item">
-                <img src="https://cdn-icons-png.flaticon.com/512/3669/3669967.png">
-                <h4>Ceremonia</h4>
-                <small>6:00 PM</small>
-            </div>
-            <div class="timeline-item">
-                <img src="https://cdn-icons-png.flaticon.com/512/3168/3168010.png">
-                <h4>Recepción</h4>
-                <small>7:30 PM</small>
-            </div>
-            <div class="timeline-item">
-                <img src="https://cdn-icons-png.flaticon.com/512/4343/4343277.png">
-                <h4>Fiesta</h4>
-                <small>10:00 PM</small>
-            </div>
+    <section class="countdown-section">
+        <h3>Nuestro para siempre comienza en:</h3>
+        <div id="timer">
+            <span>000 : 00 : 00 : 00</span>
         </div>
-        <br>
-        <a href="https://maps.app.goo.gl/example" class="btn">Ver Mapa</a>
     </section>
 
-    <section class="card fade-in">
-        <h2>Código de Vestimenta</h2>
-        <div class="divider"></div>
-        <p><b>Formal de Noche</b></p>
-        <p style="font-size: 0.85rem; color: #777;">Respetar el blanco (solo novia) y el rojo (solo pétalos).</p>
+    <section id="rsvp" class="rsvp-section">
+        <div class="envelope">
+            <img src="https://via.placeholder.com/150" alt="Sello de cera">
+            <h2>RSVP</h2>
+            <p>Por favor, confirma tu asistencia antes del 1 de mayo.</p>
+            <button class="btn">CONFIRMAR AQUÍ</button>
+        </div>
     </section>
 
-    <section class="card fade-in" style="margin-bottom: 80px;">
-        <h2>Confirmación</h2>
-        <p>Tu presencia nos hará muy felices.</p>
-        <a href="https://wa.me/51956345917?text=Hola!%20Confirmo%20mi%20asistencia." class="btn" style="background: var(--olivo-oscuro); color: #fff;">Confirmar por WhatsApp</a>
-    </section>
-
-    <div id="music-control" onclick="toggleAudio(event)" class="pulse">🎵</div>
-    
-    <audio id="bg-audio" loop preload="auto">
-        <source src="https://www.chosic.com/wp-content/uploads/2021/04/And-So-It-Begins-Inspired-By-Crush-Piano-Version.mp3" type="audio/mpeg">
-    </audio>
-
-    <script>
-        const audio = document.getElementById('bg-audio');
-        const control = document.getElementById('music-control');
-        let hasStarted = false;
-
-        // Função para iniciar áudio na primeira interação
-        function startAudio() {
-            if (!hasStarted) {
-                audio.play().then(() => {
-                    hasStarted = true;
-                    control.innerText = "⏸";
-                    control.classList.remove('pulse');
-                }).catch(e => console.log("Aguardando interação..."));
-            }
-        }
-
-        // Alternar Play/Pause manualmente
-        function toggleAudio(e) {
-            e.stopPropagation();
-            if (audio.paused) {
-                audio.play();
-                control.innerText = "⏸";
-            } else {
-                audio.pause();
-                control.innerText = "🎵";
-            }
-        }
-
-        // Efeito de aparecimento gradual
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) entry.target.classList.add('visible');
-            });
-        }, { threshold: 0.1 });
-
-        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-    </script>
 </body>
 </html>
