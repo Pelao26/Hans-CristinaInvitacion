@@ -1,0 +1,77 @@
+:root {
+    --bg-color: #f3f0e9;
+    --dark-green: #2d3428;
+    --text-gold: #a68b5b;
+    --white: #ffffff;
+}
+
+body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--dark-green);
+    line-height: 1.6;
+}
+
+/* Navegación */
+.navbar {
+    position: fixed;
+    width: 100%;
+    background: rgba(243, 240, 233, 0.9);
+    padding: 15px 0;
+    text-align: center;
+    z-index: 1000;
+}
+
+.navbar ul { list-style: none; padding: 0; margin: 0; }
+.navbar li { display: inline; margin: 0 20px; }
+.navbar a { text-decoration: none; color: var(--dark-green); font-size: 0.8rem; letter-spacing: 2px; }
+
+/* Hero Section */
+.hero {
+    height: 100 vertical-height;
+    background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('tu-foto-de-paisaje.jpg') center/cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--white);
+}
+
+.hero h1 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 5rem;
+    margin: 0;
+}
+
+/* Cuenta Regresiva */
+.countdown-section {
+    background-color: var(--dark-green);
+    color: var(--white);
+    padding: 50px 0;
+    text-align: center;
+}
+
+/* RSVP */
+.rsvp-section {
+    padding: 100px 20px;
+    text-align: center;
+}
+
+.envelope {
+    background: var(--white);
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 40px;
+    border: 1px solid #ddd;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.btn {
+    background-color: var(--dark-green);
+    color: white;
+    padding: 10px 25px;
+    border: none;
+    cursor: pointer;
+    margin-top: 20px;
+}
