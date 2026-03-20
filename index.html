@@ -3,150 +3,168 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Boda Hans & Cristina - 05.06.2026</title>
+    <title>Boda Hans & Cristina</title>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;600&family=Great+Vibes&family=Montserrat:wght@200;400&display=swap" rel="stylesheet">
     <style>
         :root { 
-            --olivo: #556b2f; 
-            --olivo-claro: #8b9467; 
-            --crema-fondo: #f4f1ea; 
-            --texto: #3e442b;
+            --olivo: #748b6f; 
+            --olivo-oscuro: #556b2f;
+            --crema: #fdfcf9; 
+            --dorado: #b8977e;
+            --texto: #4a4a4a;
         }
 
         * { box-sizing: border-box; scroll-behavior: smooth; }
-        body { 
-            margin: 0; 
-            font-family: 'Montserrat', sans-serif; 
-            background-color: var(--crema-fondo); 
-            color: var(--texto); 
-            text-align: center; 
-        }
+        body { margin: 0; font-family: 'Montserrat', sans-serif; background-color: var(--crema); color: var(--texto); overflow-x: hidden; }
 
-        /* Portada */
+        /* Animaciones */
+        .fade-in { opacity: 0; transform: translateY(20px); transition: all 1s ease-out; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+        /* Portada Principal */
         .hero {
             height: 100vh;
-            background: linear-gradient(rgba(85, 107, 47, 0.4), rgba(85, 107, 47, 0.4)), 
-                        url('https://images.unsplash.com/photo-1523438885200-e635ba2c371e?q=80&w=1200') center/cover no-repeat;
-            display: flex; flex-direction: column; justify-content: center; align-items: center; color: white; padding: 20px;
+            background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80') center/cover no-repeat;
+            display: flex; flex-direction: column; justify-content: center; align-items: center; color: white; text-align: center;
         }
-        .hero h1 { font-family: 'Great Vibes', cursive; font-size: clamp(3.5rem, 12vw, 6rem); margin: 10px 0; }
-        .hero p { font-weight: 200; letter-spacing: 5px; text-transform: uppercase; font-size: 0.8rem; }
+        .hero h1 { font-family: 'Great Vibes', cursive; font-size: clamp(4rem, 15vw, 7rem); margin: 0; text-shadow: 2px 2px 10px rgba(0,0,0,0.3); }
+        .hero p { letter-spacing: 4px; text-transform: uppercase; font-size: 0.9rem; margin-top: 10px; }
 
-        /* Contador */
-        .countdown-section { padding: 50px 15px; background: white; border-top: 5px solid var(--olivo); }
-        .reloj { display: flex; justify-content: center; gap: 10px; margin-top: 25px; }
-        .unidad { background: var(--crema-fondo); padding: 15px; border-radius: 12px; min-width: 75px; border: 1px solid #e0ddd5; }
-        .number { display: block; font-size: 1.8rem; font-family: 'Cormorant Garamond', serif; color: var(--olivo); font-weight: bold; }
+        /* Versículo */
+        .verse-section { padding: 80px 20px; text-align: center; background: white; }
+        .verse-section i { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; color: var(--olivo); display: block; margin-bottom: 10px; }
+        .verse-section p { font-size: 1.1rem; max-width: 600px; margin: 0 auto; line-height: 1.6; }
+
+        /* Contador Estilo Canva */
+        .counter-box { background: var(--olivo); color: white; padding: 60px 20px; }
+        .counter-box h2 { font-family: 'Great Vibes', cursive; font-size: 3rem; margin-bottom: 30px; }
+        .timer { display: flex; justify-content: center; gap: 20px; }
+        .time-part { display: flex; flex-direction: column; font-size: 0.8rem; letter-spacing: 2px; }
+        .time-part span { font-size: 2.5rem; font-family: 'Cormorant Garamond', serif; font-weight: bold; }
+
+        /* Secciones con Imagen */
+        .section-img { width: 100%; max-width: 500px; height: 350px; object-fit: cover; border-radius: 15px; margin-bottom: 25px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+
+        /* Cronograma (Timeline) */
+        .timeline { padding: 60px 20px; background: #fff; }
+        .timeline-item { border-bottom: 1px solid #eee; padding: 20px 0; display: flex; justify-content: space-between; align-items: center; max-width: 500px; margin: 0 auto; }
+        .timeline-item b { color: var(--olivo); font-size: 1.2rem; }
 
         /* Tarjetas */
-        .card { 
-            max-width: 500px; margin: 30px auto; padding: 45px 25px; 
-            background: white; border-radius: 20px; 
-            box-shadow: 0 10px 25px rgba(62, 68, 43, 0.05);
-            border-left: 4px solid var(--olivo-claro);
-        }
-        h2 { font-family: 'Cormorant Garamond', serif; font-size: 2.3rem; color: var(--olivo); margin-bottom: 15px; }
-        
-        .btn { 
-            display: inline-block; margin-top: 20px; padding: 16px 40px; 
-            background: var(--olivo); color: white; text-decoration: none; 
-            border-radius: 50px; font-size: 0.85rem; letter-spacing: 1px; 
-            transition: 0.3s; box-shadow: 0 4px 10px rgba(85, 107, 47, 0.2);
-        }
-        .btn:hover { background: var(--olivo-claro); transform: translateY(-2px); }
+        .card { max-width: 550px; margin: 40px auto; padding: 40px 25px; background: white; border-radius: 20px; box-shadow: 0 5px 15px rgba(0,0,0,0.03); border: 1px solid #f0f0f0; }
+        h2 { font-family: 'Great Vibes', cursive; font-size: 3.5rem; color: var(--olivo); margin-bottom: 10px; }
+        .btn { display: inline-block; background: var(--olivo); color: white; padding: 15px 35px; text-decoration: none; border-radius: 50px; margin-top: 20px; font-size: 0.9rem; letter-spacing: 1px; transition: 0.3s; }
+        .btn:hover { background: var(--olivo-oscuro); transform: scale(1.05); }
 
-        /* Control de Música */
-        #music-control { 
-            position: fixed; bottom: 25px; right: 25px; z-index: 1000; 
-            background: white; border-radius: 50%; width: 50px; height: 50px; 
-            display: flex; align-items: center; justify-content: center; 
-            border: 2px solid var(--olivo); cursor: pointer; color: var(--olivo);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
+        /* Playlist Section */
+        .playlist-card { background: var(--olivo); color: white; }
+        .playlist-card h2, .playlist-card p { color: white; }
+        .btn-white { background: white; color: var(--olivo); font-weight: bold; }
+
+        /* Float Music Button */
+        #music-toggle { position: fixed; bottom: 20px; right: 20px; background: white; border: 2px solid var(--olivo); border-radius: 50%; width: 50px; height: 50px; cursor: pointer; z-index: 1000; display: flex; align-items: center; justify-content: center; color: var(--olivo); font-size: 1.5rem; }
     </style>
 </head>
-<body onscroll="iniciarAudio()" onclick="iniciarAudio()" ontouchstart="iniciarAudio()">
+<body onclick="startMusic()" onscroll="startMusic()">
 
     <section class="hero">
-        <p>Bajo la bendición de Dios</p>
-        <h1>Hans & Cristina</h1>
-        <p>05 . 06 . 2026</p>
-        <div style="margin-top: 30px; font-size: 0.7rem; letter-spacing: 2px; opacity: 0.9;">DESLIZA PARA DESCUBRIR</div>
+        <div class="fade-in">
+            <p>Nos Casamos</p>
+            <h1>Hans & Cristina</h1>
+            <p>05 . 06 . 2026</p>
+            <p style="font-size: 0.6rem; margin-top: 40px;">Desliza para descubrir</p>
+        </div>
     </section>
 
-    <div class="countdown-section">
-        <h2>Faltan para el Gran Día</h2>
-        <div class="reloj" id="timer">
-            <div class="unidad"><span class="number" id="days">00</span>Días</div>
-            <div class="unidad"><span class="number" id="hours">00</span>Hrs</div>
-            <div class="unidad"><span class="number" id="mins">00</span>Min</div>
-            <div class="unidad"><span class="number" id="secs">00</span>Seg</div>
+    <section class="verse-section fade-in">
+        <i>"El amor nunca deja de ser"</i>
+        <p>1 Corintios 13:8</p>
+        <div style="margin-top: 30px;">
+            <p>Con la bendición de Dios y el corazón lleno de amor, hemos decidido unir nuestras vidas en matrimonio.</p>
         </div>
+    </section>
+
+    <section class="counter-box fade-in">
+        <h2>Faltan...</h2>
+        <div class="timer">
+            <div class="time-part"><span id="days">00</span>DÍAS</div>
+            <div class="time-part"><span id="hours">00</span>HORAS</div>
+            <div class="time-part"><span id="mins">00</span>MIN</div>
+            <div class="time-part"><span id="secs">00</span>SEG</div>
+        </div>
+    </section>
+
+    <section class="timeline fade-in">
+        <h2>Itinerario</h2>
+        <div class="timeline-item"><span>Ceremonia - Iglesia La Ermita</span> <b>6:00 PM</b></div>
+        <div class="timeline-item"><span>Recepción - Salón de Eventos</span> <b>7:00 PM</b></div>
+        <div class="timeline-item"><span>Cena</span> <b>8:30 PM</b></div>
+        <div class="timeline-item"><span>Comienza la Fiesta</span> <b>10:00 PM</b></div>
+        <a href="https://maps.google.com" class="btn">VER UBICACIÓN</a>
+    </section>
+
+    <div class="card fade-in">
+        <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?q=80&w=500" class="section-img" alt="Vestimenta">
+        <h2>Vestimenta</h2>
+        <p><b>Formal de noche</b></p>
+        <p>Este día el blanco es para la novia, el rojo para los pétalos y el negro para la noche. ¡Tú elige uno para brillar!</p>
     </div>
 
-    <div class="card">
-        <h2>📍 Nuestra Boda</h2>
-        <p>Estamos felices de compartir nuestra unión contigo.</p>
-        <p><strong>Lugar:</strong> Salón de Eventos / Iglesia</p>
-        <p>Dirección del lugar, Ciudad</p>
-        <a href="https://maps.google.com" target="_blank" class="btn">VER UBICACIÓN</a>
+    <div class="card playlist-card fade-in">
+        <h2>Tu Misión:</h2>
+        <p>Salvar la pista de baile. Súmate a la playlist de la boda, agrega los temazos que no pueden faltar.</p>
+        <a href="#" class="btn btn-white">¡ARMEMOS EL PLAYLIST!</a>
     </div>
 
-    <div class="card">
-        <h2>🎁 Muestra de Cariño</h2>
-        <p>"Todo lo que hagan, háganlo con amor".</p>
-        <p><strong>Yape / Plin:</strong> 956 345 917</p>
-        <p><strong>Banco:</strong> Tu banco aquí<br>Cuenta: XXX-XXXXXX-X-XX</p>
+    <div class="card fade-in">
+        <img src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?q=80&w=500" class="section-img" alt="Regalos">
+        <h2>Regalos</h2>
+        <p>El mejor regalo es tu presencia, pero si deseas hacernos un obsequio, una contribución en efectivo será de gran ayuda.</p>
+        <p><b>Yape / Plin: 956 345 917</b></p>
     </div>
 
-    <div class="card" style="margin-bottom: 80px;">
-        <h2>✅ Confirmación</h2>
-        <p>Agradecemos confirmar antes del 15 de mayo.</p>
-        <a href="https://wa.me/51956345917?text=Hola%20Hans%20y%20Cristina!%20Confirmo%20mi%20asistencia%20a%20su%20boda." class="btn">CONFIRMAR POR WHATSAPP</a>
+    <div class="card fade-in" style="margin-bottom: 100px;">
+        <h2>¿Nos acompañas?</h2>
+        <p>Por favor, confirma tu asistencia antes del 15 de mayo de 2026.</p>
+        <a href="https://wa.me/51956345917?text=Hola%20Hans%20y%20Cristina!%20Confirmo%20mi%20asistencia." class="btn">CONFIRMAR AQUÍ</a>
     </div>
 
-    <div id="music-control" onclick="toggleMusic(event)">
-        <span id="music-status">🎵</span>
-    </div>
-
-    <audio id="wedding-song" loop preload="auto">
+    <button id="music-toggle" onclick="toggleMusic(event)">🎵</button>
+    <audio id="song" loop>
         <source src="https://www.chosic.com/wp-content/uploads/2021/07/Rain-and-Light-Adoration.mp3" type="audio/mpeg">
     </audio>
 
     <script>
-        // Configuración de la Fecha: 5 de Junio de 2026
-        const weddingDate = new Date("Jun 5, 2026 17:00:00").getTime();
-
+        // Contador
+        const target = new Date("Jun 5, 2026 18:00:00").getTime();
         setInterval(() => {
             const now = new Date().getTime();
-            const diff = weddingDate - now;
-            document.getElementById("days").innerText = Math.floor(diff / (1000 * 60 * 60 * 24));
-            document.getElementById("hours").innerText = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            document.getElementById("mins").innerText = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-            document.getElementById("secs").innerText = Math.floor((diff % (1000 * 60)) / 1000);
+            const d = target - now;
+            document.getElementById("days").innerText = Math.floor(d / (1000 * 60 * 60 * 24));
+            document.getElementById("hours").innerText = Math.floor((d % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            document.getElementById("mins").innerText = Math.floor((d % (1000 * 60 * 60)) / (1000 * 60));
+            document.getElementById("secs").innerText = Math.floor((d % (1000 * 60)) / 1000);
         }, 1000);
 
-        const audio = document.getElementById('wedding-song');
-        let musicStarted = false;
+        // Aparecer al hacer scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('visible');
+            });
+        }, { threshold: 0.1 });
 
-        function iniciarAudio() {
-            if (!musicStarted) {
-                audio.play().then(() => {
-                    document.getElementById('music-status').innerText = "⏸";
-                    musicStarted = true;
-                }).catch(e => console.log("Navegador bloqueó audio inicial"));
-            }
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        // Música
+        const audio = document.getElementById("song");
+        let playing = false;
+        function startMusic() {
+            if(!playing) { audio.play(); playing = true; document.getElementById("music-toggle").innerText = "⏸"; }
         }
-
-        function toggleMusic(event) {
-            event.stopPropagation();
-            if (audio.paused) {
-                audio.play();
-                document.getElementById('music-status').innerText = "⏸";
-            } else {
-                audio.pause();
-                document.getElementById('music-status').innerText = "🎵";
-            }
+        function toggleMusic(e) {
+            e.stopPropagation();
+            if(audio.paused) { audio.play(); document.getElementById("music-toggle").innerText = "⏸"; }
+            else { audio.pause(); document.getElementById("music-toggle").innerText = "🎵"; }
         }
     </script>
 </body>
