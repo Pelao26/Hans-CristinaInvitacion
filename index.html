@@ -3,91 +3,201 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hans & Cristina - Nuestra Boda</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+    <title>Hans & Cristina - 05.06.26</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400&family=Patrick+Hand&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #f8f3ef; /* Tono crema de la imagen */
+            --dark-green: #2d3428;
+            --text-gold: #a68b5b;
+            --text-dark: #333;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            scroll-behavior: smooth;
+        }
+
+        .cursive { font-family: 'Great Vibes', cursive; }
+        .handwritten { font-family: 'Patrick Hand', cursive; }
+
+        /* Navegación */
+        .navbar {
+            position: fixed;
+            width: 100%;
+            background: rgba(248, 243, 239, 0.95);
+            padding: 15px 0;
+            text-align: center;
+            z-index: 1000;
+            border-bottom: 1px solid #eee;
+        }
+        .navbar a {
+            text-decoration: none;
+            color: var(--dark-green);
+            margin: 0 15px;
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            font-weight: bold;
+        }
+
+        /* Hero */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&q=80&w=2070') center/cover;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+        }
+        .hero h1 { font-size: 5rem; margin: 0; }
+        .hero p { letter-spacing: 5px; font-size: 1.2rem; }
+
+        /* Secciones Generales */
+        section { padding: 80px 20px; max-width: 1000px; margin: 0 auto; text-align: center; }
+
+        /* Memory Lane */
+        .timeline { position: relative; margin: 40px 0; }
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 1px;
+            background: var(--dark-green);
+            top: 0; bottom: 0; left: 50%;
+        }
+        .timeline-item { margin-bottom: 40px; position: relative; z-index: 1; }
+        .timeline-img {
+            background: white;
+            padding: 10px;
+            display: inline-block;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            max-width: 200px;
+        }
+        .timeline-img img { width: 100%; }
+
+        /* Where to Stay & Gifts */
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+            text-align: left;
+            margin-top: 50px;
+        }
+        .info-grid img { width: 100%; max-width: 250px; display: block; margin: 0 auto; }
+        
+        .hotel-buttons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .btn-outline {
+            border: 1px solid var(--text-dark);
+            padding: 12px;
+            background: transparent;
+            cursor: pointer;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            transition: 0.3s;
+        }
+        .btn-outline:hover { background: var(--dark-green); color: white; }
+
+        /* Botón Regalo */
+        .btn-gift {
+            display: inline-block;
+            border: 1px solid var(--text-dark);
+            padding: 15px 30px;
+            margin-top: 20px;
+            text-decoration: none;
+            color: var(--text-dark);
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        @media (max-width: 768px) {
+            .info-grid { grid-template-columns: 1fr; text-align: center; }
+            .info-grid.reverse { direction: rtl; } /* Para alternar imagen/texto en móvil */
+            .hero h1 { font-size: 3rem; }
+        }
+    </style>
 </head>
 <body>
 
     <nav class="navbar">
-        <ul>
-            <li><a href="#home">HOME</a></li>
-            <li><a href="#story">HISTORIA</a></li>
-            <li><a href="#rsvp">RSVP</a></li>
-            <li><a href="#faq">FAQ</a></li>
-        </ul>
+        <a href="#home">HOME</a>
+        <a href="#memory">MEMORY LANE</a>
+        <a href="#stay">WHERE TO STAY</a>
+        <a href="#gifts">GIFTS</a>
     </nav>
 
     <header id="home" class="hero">
-        <div class="hero-content">
-            <p>THE WEDDING OF</p>
-            <h1>Hans & Cristina</h1>
-            <p class="date">05 DE JUNIO, 2026</p>
-        </div>
+        <p>THE WEDDING OF</p>
+        <h1 class="cursive">Hans & Cristina</h1>
+        <p>05 . 06 . 2026</p>
     </header>
 
-    <section id="story" class="welcome">
-        <div class="container">
-            <h2>Bienvenidos</h2>
-            <p>Estamos felices de compartir este día tan especial con ustedes...</p>
-            <div class="flowers"></div>
+    <section id="memory">
+        <h2 class="handwritten" style="font-size: 3rem;">Memory Lane</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-img">
+                    <img src="https://via.placeholder.com/200x250" alt="2018">
+                    <p class="handwritten">2018</p>
+                </div>
+                <p>Donde todo empezó...</p>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-img">
+                    <img src="https://via.placeholder.com/200x250" alt="2025">
+                    <p class="handwritten">2025</p>
+                </div>
+                <p>El "Sí" para siempre.</p>
+            </div>
         </div>
     </section>
 
-    <section id="memory-lane" class="memory-lane">
-    <div class="lane-title">
-        <h2 class="cursive">Memory Lane</h2>
-        <p>Donde nuestra historia comenzó</p>
-    </div>
-
-    <div class="timeline">
-        <div class="timeline-item">
-            <div class="timeline-img">
-                <img src="foto2018.jpg" alt="2018">
-                <span class="year">2018</span>
+    <section id="stay">
+        <div class="info-grid">
+            <div class="info-text">
+                <h2 class="handwritten" style="font-size: 2.5rem;">Where to Stay</h2>
+                <p>Hemos seleccionado algunas opciones para su comodidad durante el fin de semana de nuestra boda. Recomendamos reservar con anticipación.</p>
+                <div class="hotel-buttons">
+                    <button class="btn-outline">HOTEL 1</button>
+                    <button class="btn-outline">HOTEL 2</button>
+                    <button class="btn-outline">HOTEL 3</button>
+                    <button class="btn-outline">HOTEL 4</button>
+                </div>
             </div>
-            <div class="timeline-content">
-                <p>El primer día que nos conocimos.</p>
+            <div class="info-graphic">
+                <img src="https://cdn-icons-png.flaticon.com/512/2590/2590525.png" alt="Keys" style="opacity: 0.6; filter: grayscale(1);">
             </div>
-        </div>
-
-        <div class="timeline-item">
-            <div class="timeline-img">
-                <img src="foto2019.jpg" alt="2019">
-                <span class="year">2019</span>
-            </div>
-            <div class="timeline-content">
-                <p>Nuestra primera cita oficial.</p>
-            </div>
-        </div>
-
-        <div class="timeline-item">
-            <div class="timeline-img">
-                <img src="propuesta.jpg" alt="2025">
-                <span class="year">2025</span>
-            </div>
-            <div class="timeline-content">
-                <p>¡Dijimos que sí para siempre!</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-    <section class="countdown-section">
-        <h3>Nuestro para siempre comienza en:</h3>
-        <div id="timer">
-            <span>000 : 00 : 00 : 00</span>
         </div>
     </section>
 
-    <section id="rsvp" class="rsvp-section">
-        <div class="envelope">
-            <img src="https://via.placeholder.com/150" alt="Sello de cera">
-            <h2>RSVP</h2>
-            <p>Por favor, confirma tu asistencia antes del 1 de mayo.</p>
-            <button class="btn">CONFIRMAR AQUÍ</button>
+    <hr style="border: 0; border-top: 1px solid #ddd; width: 50%; margin: 0 auto;">
+
+    <section id="gifts">
+        <div class="info-grid">
+            <div class="info-graphic">
+                <img src="https://cdn-icons-png.flaticon.com/512/2169/2169862.png" alt="Gift" style="opacity: 0.6; filter: grayscale(1);">
+            </div>
+            <div class="info-text" style="text-align: right;">
+                <h2 class="handwritten" style="font-size: 2.5rem;">From the Heart</h2>
+                <p>Su presencia es el mejor regalo que podríamos pedir. Si desean tener un detalle adicional, hemos creado un fondo para nuestra luna de miel.</p>
+                <a href="#" class="btn-gift">PAYPAL DONATION</a>
+            </div>
         </div>
     </section>
+
+    <footer style="padding: 50px; background: #eee; text-align: center; font-size: 0.8rem;">
+        <p class="cursive" style="font-size: 2rem;">H & C</p>
+        <p>Hecho con amor para nuestra boda</p>
+    </footer>
 
 </body>
 </html>
