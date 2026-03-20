@@ -7,17 +7,22 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;600&family=Great+Vibes&family=Montserrat:wght@200;400&display=swap" rel="stylesheet">
     <style>
         :root { 
-            --olivo: #556b2f; /* Verde Olivo Principal */
+            --olivo: #556b2f; 
             --olivo-claro: #8b9467; 
             --crema-fondo: #f4f1ea; 
-            --dorado-suave: #b8977e;
             --texto: #3e442b;
         }
 
         * { box-sizing: border-box; scroll-behavior: smooth; }
-        body { margin: 0; font-family: 'Montserrat', sans-serif; background-color: var(--crema-fondo); color: var(--texto); text-align: center; }
+        body { 
+            margin: 0; 
+            font-family: 'Montserrat', sans-serif; 
+            background-color: var(--crema-fondo); 
+            color: var(--texto); 
+            text-align: center; 
+        }
 
-        /* Portada con Estilo Olivo */
+        /* Portada */
         .hero {
             height: 100vh;
             background: linear-gradient(rgba(85, 107, 47, 0.4), rgba(85, 107, 47, 0.4)), 
@@ -27,17 +32,122 @@
         .hero h1 { font-family: 'Great Vibes', cursive; font-size: clamp(3.5rem, 12vw, 6rem); margin: 10px 0; }
         .hero p { font-weight: 200; letter-spacing: 5px; text-transform: uppercase; font-size: 0.8rem; }
 
-        /* Contador Estilo Natural */
+        /* Contador */
         .countdown-section { padding: 50px 15px; background: white; border-top: 5px solid var(--olivo); }
         .reloj { display: flex; justify-content: center; gap: 10px; margin-top: 25px; }
         .unidad { background: var(--crema-fondo); padding: 15px; border-radius: 12px; min-width: 75px; border: 1px solid #e0ddd5; }
         .number { display: block; font-size: 1.8rem; font-family: 'Cormorant Garamond', serif; color: var(--olivo); font-weight: bold; }
 
-        /* Tarjetas de Información */
+        /* Tarjetas */
         .card { 
             max-width: 500px; margin: 30px auto; padding: 45px 25px; 
             background: white; border-radius: 20px; 
             box-shadow: 0 10px 25px rgba(62, 68, 43, 0.05);
             border-left: 4px solid var(--olivo-claro);
         }
-        h2 { font-family: 'Cormorant Garamond', serif; font-size: 2.3rem; color: var(--olivo);
+        h2 { font-family: 'Cormorant Garamond', serif; font-size: 2.3rem; color: var(--olivo); margin-bottom: 15px; }
+        
+        .btn { 
+            display: inline-block; margin-top: 20px; padding: 16px 40px; 
+            background: var(--olivo); color: white; text-decoration: none; 
+            border-radius: 50px; font-size: 0.85rem; letter-spacing: 1px; 
+            transition: 0.3s; box-shadow: 0 4px 10px rgba(85, 107, 47, 0.2);
+        }
+        .btn:hover { background: var(--olivo-claro); transform: translateY(-2px); }
+
+        /* Control de Música */
+        #music-control { 
+            position: fixed; bottom: 25px; right: 25px; z-index: 1000; 
+            background: white; border-radius: 50%; width: 50px; height: 50px; 
+            display: flex; align-items: center; justify-content: center; 
+            border: 2px solid var(--olivo); cursor: pointer; color: var(--olivo);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body onscroll="iniciarAudio()" onclick="iniciarAudio()" ontouchstart="iniciarAudio()">
+
+    <section class="hero">
+        <p>Bajo la bendición de Dios</p>
+        <h1>Hans & Cristina</h1>
+        <p>05 . 06 . 2026</p>
+        <div style="margin-top: 30px; font-size: 0.7rem; letter-spacing: 2px; opacity: 0.9;">DESLIZA PARA DESCUBRIR</div>
+    </section>
+
+    <div class="countdown-section">
+        <h2>Faltan para el Gran Día</h2>
+        <div class="reloj" id="timer">
+            <div class="unidad"><span class="number" id="days">00</span>Días</div>
+            <div class="unidad"><span class="number" id="hours">00</span>Hrs</div>
+            <div class="unidad"><span class="number" id="mins">00</span>Min</div>
+            <div class="unidad"><span class="number" id="secs">00</span>Seg</div>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>📍 Nuestra Boda</h2>
+        <p>Estamos felices de compartir nuestra unión contigo.</p>
+        <p><strong>Lugar:</strong> Salón de Eventos / Iglesia</p>
+        <p>Dirección del lugar, Ciudad</p>
+        <a href="https://maps.google.com" target="_blank" class="btn">VER UBICACIÓN</a>
+    </div>
+
+    <div class="card">
+        <h2>🎁 Muestra de Cariño</h2>
+        <p>"Todo lo que hagan, háganlo con amor".</p>
+        <p><strong>Yape / Plin:</strong> 956 345 917</p>
+        <p><strong>Banco:</strong> Tu banco aquí<br>Cuenta: XXX-XXXXXX-X-XX</p>
+    </div>
+
+    <div class="card" style="margin-bottom: 80px;">
+        <h2>✅ Confirmación</h2>
+        <p>Agradecemos confirmar antes del 15 de mayo.</p>
+        <a href="https://wa.me/51956345917?text=Hola%20Hans%20y%20Cristina!%20Confirmo%20mi%20asistencia%20a%20su%20boda." class="btn">CONFIRMAR POR WHATSAPP</a>
+    </div>
+
+    <div id="music-control" onclick="toggleMusic(event)">
+        <span id="music-status">🎵</span>
+    </div>
+
+    <audio id="wedding-song" loop preload="auto">
+        <source src="https://www.chosic.com/wp-content/uploads/2021/07/Rain-and-Light-Adoration.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        // Configuración de la Fecha: 5 de Junio de 2026
+        const weddingDate = new Date("Jun 5, 2026 17:00:00").getTime();
+
+        setInterval(() => {
+            const now = new Date().getTime();
+            const diff = weddingDate - now;
+            document.getElementById("days").innerText = Math.floor(diff / (1000 * 60 * 60 * 24));
+            document.getElementById("hours").innerText = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            document.getElementById("mins").innerText = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            document.getElementById("secs").innerText = Math.floor((diff % (1000 * 60)) / 1000);
+        }, 1000);
+
+        const audio = document.getElementById('wedding-song');
+        let musicStarted = false;
+
+        function iniciarAudio() {
+            if (!musicStarted) {
+                audio.play().then(() => {
+                    document.getElementById('music-status').innerText = "⏸";
+                    musicStarted = true;
+                }).catch(e => console.log("Navegador bloqueó audio inicial"));
+            }
+        }
+
+        function toggleMusic(event) {
+            event.stopPropagation();
+            if (audio.paused) {
+                audio.play();
+                document.getElementById('music-status').innerText = "⏸";
+            } else {
+                audio.pause();
+                document.getElementById('music-status').innerText = "🎵";
+            }
+        }
+    </script>
+</body>
+</html>
